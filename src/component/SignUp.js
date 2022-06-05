@@ -69,7 +69,7 @@ function SignUp() {
           <label htmlFor="cpassword" className="form-label">Confirm Password</label>
           <input required minLength={5} value={cred.cpassword} type="text" className="form-control" name='cpassword' id="cpassword" onChange={onChange} />
         </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
+        <button type="submit" className="btn btn-primary">Create Account</button>
       </form>
     </div>
   )
