@@ -28,7 +28,7 @@ const NoteState = (props) => {
 
     // getNote
     const getNote = async () => {
-        const url = "http://localhost:5000/api/notes/fetch-all-notes";
+        const url = "https://inotebook-backend-secure.herokuapp.com/api/notes/fetch-all-notes";
         const response = await fetch(url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
             headers: {
@@ -53,7 +53,7 @@ const NoteState = (props) => {
             description:description,
             tag:tag
         }
-        const url = "http://localhost:5000/api/notes/add-notes";
+        const url = "https://inotebook-backend-secure.herokuapp.com/api/notes/add-notes";
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
@@ -78,7 +78,7 @@ const NoteState = (props) => {
 
     // function to delete note
     const deleteNote = async (id) => {
-        const url = `http://localhost:5000/api/notes/delete-note/${id}`;
+        const url = `https://inotebook-backend-secure.herokuapp.com/api/notes/delete-note/${id}`;
         const response = await fetch(url, {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             headers: {
@@ -108,7 +108,7 @@ const NoteState = (props) => {
             description:description,
             tag:tag
         }
-        const url = `http://localhost:5000/api/notes/update-note/${id}`;
+        const url = `https://inotebook-backend-secure.herokuapp.com/api/notes/update-note/${id}`;
         const response = await fetch(url, {
             method: 'PUT', // *GET, POST, PUT, DELETE, etc.
             headers: {

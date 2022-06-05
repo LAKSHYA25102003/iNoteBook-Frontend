@@ -15,7 +15,7 @@ function SignUp() {
   const [cred,setCred]=useState({name:"",email:"",password:"",cpassword:""});
   const handleSubmit=async(event)=>{
     event.preventDefault();
-    const url="http://localhost:5000/api/auth/create-user";
+    const url="https://inotebook-backend-secure.herokuapp.com/api/auth/create-user";
     const data={
       name:cred.name,
       email:cred.email,
