@@ -7,45 +7,49 @@ import { useContext } from 'react';
 function SignUp() {
 
   // to handle alert for signup
-  const context=useContext(AlertContext);
-  const {handleAlert}=context;
+  const context = useContext(AlertContext);
+  const { handleAlert } = context;
 
 
-  let navigate=useNavigate();
-  const [cred,setCred]=useState({name:"",email:"",password:"",cpassword:""});
-  const handleSubmit=async(event)=>{
+  let navigate = useNavigate();
+  const [cred, setCred] = useState({ name: "", email: "", password: "", cpassword: "" });
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const url="https://inotebook-backend-secure.herokuapp.com/api/auth/create-user";
-    const data={
-      name:cred.name,
-      email:cred.email,
-      password:cred.password
+    if (cred.password !== cred.cpassword) {
+      handleAlert("Error:Password and confirm password does not match!", "danger");
     }
-    const response=await fetch(url,{
-      method:'POST',
-      headers:{
-        'Content-Type':"application/json"
-      },
-      body:JSON.stringify(data)
+    else {
+      const url = "https://inotebook-backend-secure.herokuapp.com/api/auth/create-user";
+      const data = {
+        name: cred.name,
+        email: cred.email,
+        password: cred.password
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(data)
 
-    })
+      })
 
-    const json=await response.json();
-    if(json.success)
-    {
-      localStorage.setItem("Token",json.authtoken);
-        handleAlert("Account is created successfully!","success");
+      const json = await response.json();
+      if (json.success) {
+        localStorage.setItem("Token", json.authtoken);
+        handleAlert("Account is created successfully!", "success");
         navigate("/");
-    }
-    else
-    {
-      setCred({name:"",email:"",password:""});
-      handleAlert("Error:User already exist!","danger");
+      }
+      else {
+        setCred({ name: "", email: "", password: "" });
+        handleAlert("Error:User already exist!", "danger");
+
+      }
 
     }
   }
-  const onChange= async (event)=>{
-     setCred({...cred,[event.target.name]:event.target.value})
+  const onChange = async (event) => {
+    setCred({ ...cred, [event.target.name]: event.target.value })
   }
 
   return (
@@ -58,7 +62,7 @@ function SignUp() {
         </div>
         <div className="mb-3">
           <label htmlFor="semail" className="form-label">Email address</label>
-          <input required minLength={5}  value={cred.email} type="email" className="form-control" id="semail" name='email' aria-describedby="emailHelp" onChange={onChange} />
+          <input required minLength={5} value={cred.email} type="email" className="form-control" id="semail" name='email' aria-describedby="emailHelp" onChange={onChange} />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">

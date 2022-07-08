@@ -2,7 +2,6 @@ import Modal from 'react-modal';
 import React from "react";
 import Home from "./component/Home";
 import Navbar from "./component/Navbar";
-import About from "./component/About";
 import NoteState from "./context/notes/NoteState";
 import Login from './component/Login';
 import AuthState from './context/authentication/AuthState';
@@ -35,9 +34,6 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
-            </Routes>
-            <Routes>
-              <Route path="/about" element={<About />} />
             </Routes>
             <Routes>
               <Route path="/login" element={<Login />} />
