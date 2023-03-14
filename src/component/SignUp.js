@@ -19,7 +19,7 @@ function SignUp() {
       handleAlert("Error:Password and confirm password does not match!", "danger");
     }
     else {
-      const url = "https://inotebook-backend-secure.herokuapp.com/api/auth/create-user";
+      const url = `${process.env.REACT_APP_BASE_URL}/api/auth/create-user`;
       const data = {
         name: cred.name,
         email: cred.email,

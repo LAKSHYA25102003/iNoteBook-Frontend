@@ -21,7 +21,7 @@ function Login() {
             email:cred.email,
             password:cred.password
         }
-        const url = "https://inotebook-backend-secure.herokuapp.com/api/auth/login";
+        const url = `${process.env.REACT_APP_BASE_URL}/api/auth/login`;
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
